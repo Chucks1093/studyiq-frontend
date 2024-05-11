@@ -14,7 +14,7 @@ function QuizPage() {
          
 			<div className="cards__container">
 				{quizCards.map((card) => (
-					<QuizCard title={card.name} createdAt={card.createdAt} />
+					<QuizCard question={card} />
 				))}
 			</div>
 			<button>

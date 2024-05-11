@@ -1,6 +1,7 @@
 import { Fragment } from 'react/jsx-runtime';
 import { useQuestion } from '../utils/redux/useQuestion';
 import QuizBoard from './quiz-page/QuizBoard';
+import { useState } from 'react';
 
 function Metrics({
 	src,
@@ -26,6 +27,8 @@ function Metrics({
 
 function QuizOverview() {
 	const currentQuiz = useQuestion((state) => state.currentQuestion);
+	const [showQuiz, setShowQuiz] = useState(false)
+	console.log(currentQuiz)
 	return (
 		<Fragment>
 			<div>
@@ -34,15 +37,15 @@ function QuizOverview() {
 					src="/icons/arrow-right.svg"
 					alt=""
 				/>
-				<h1 className="font-bold text-4xl">The Ultimate way to make money</h1>
+				<h1 className="font-bold text-4xl">{currentQuiz?.name}</h1>
 				<div className="mt-6 border-b border-gray-300 pb-5">
 					<Metrics
-						unit={`${13}`}
+						unit={`${currentQuiz?.questions.length}`}
 						title="Multiple Choice Questions"
 						src="/icons/q-count.svg"
 					/>
 					<Metrics unit="90%" title="For Badge" src="/icons/award-b.svg" />
-					<Metrics unit="40%" title="Previous Score" src="/icons/score.svg" />
+					{/* <Metrics unit={`${currentQuiz.results[0].score}`} title="Previous Score" src="/icons/score.svg" /> */}
 					<div className="flex gap-3 items-center mb-5">
 						<span className="w-12 h-12 p-2 rounded-full bg-gray-200 border border-gray-600 flex justify-center items-center">
 							<img className="block w-full invert-[.5]" src="/icons/difficulty.svg" alt="" />
@@ -75,9 +78,9 @@ function QuizOverview() {
 						</p>
 					</div>
 				</div>
-				<button className='w-[14rem] rounded-3xl py-2 bg-gray-600 font-bold text-white mt-8'>Start Quiz</button>
+				<button className='w-[14rem] rounded-3xl py-2 bg-gray-600 font-bold text-white mt-8' onClick={()=> setShowQuiz(true)}>Start Quiz</button>
 			</div>
-			<QuizBoard />
+			{showQuiz && <QuizBoard setShowQuiz={setShowQuiz} />}
 
 		</Fragment>
 	);

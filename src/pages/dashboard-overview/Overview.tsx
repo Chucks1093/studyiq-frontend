@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import AnalyticsCard from '../../components/analytic-card/AnalyticsCard';
 import HeroChart from '../../components/dashboard/hero-chart/HeroChart';
 import useCurrentUser from '../../utils/redux/currentUser';
+import { getQuizzes } from './request';
+import { useQuestion } from '../../utils/redux/useQuestion';
 
 const analyticsCards = [
 	{
@@ -37,8 +40,23 @@ const analyticsCards = [
 	},
 ];
 
+
+
 function Overview() {
 	const currentUser = useCurrentUser((state) => state.currentUser);
+	const setAllUsersCards  = useQuestion(state => state.setAllUsersCards) 
+	const fetchQuiz =async() => {
+      try {
+         const data = await getQuizzes();
+         console.log(data)
+         setAllUsersCards(data.data)
+      }catch(error) {
+         console.log(error)
+      }
+   }
+   useEffect(()=> {
+      fetchQuiz() 
+   }, [])
    
 	return (
 		<div>

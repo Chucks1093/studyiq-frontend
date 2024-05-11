@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 import { useQuestion } from "../../utils/redux/useQuestion";
 import showToast from "../../utils/showToast";
+import { BASE_URL } from "../../utils/constants";
+import { token } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 
 interface QuizResponse {
@@ -30,6 +33,9 @@ interface QuizResponse {
 function CreateQuiz() {
 	const fileRef = useRef<HTMLInputElement>(null);
 	const addNewCard = useQuestion((state) => state.addNewCard);
+	const setCurrentQuestion = useQuestion((state) => state.setCurrentQuestion);
+	const navigate = useNavigate();
+
 	const [isLoading, setIsLoading] = useState(false);
 	const [loadingText, setLoadingText] = useState(
 		'Click on the button below to upload'
@@ -46,13 +52,14 @@ function CreateQuiz() {
 		if (file) {
 			const formData = new FormData();
 			formData.append('file', file);
+			showToast.loading("Uploading file")
 
 			try {
 				// Send the file to the server using the fetch API
 				setLoadingText('Getting Response..');
 				setTimeout(() => setLoadingText('Generating Questions...'), 4000);
 				setTimeout(() => setLoadingText('Analyzing Answers...'), 11000);
-				const response = await fetch(`${BASEURL}/quiz?count=10`, {
+				const response = await fetch(`${BASE_URL}/quiz?count=10`, {
 					method: 'POST',
 					headers: {
 						authorization: `Bearer ${token}`,
@@ -61,12 +68,13 @@ function CreateQuiz() {
 				});
 
 				// Handle the server response
+				
 				if (response.ok) {
 					const data = (await response.json()) as QuizResponse;
 					addNewCard(data.data);
-					console.log(data);
+					setCurrentQuestion(data.data)
+					navigate(`/dashboard/quiz/${data.data._id}`)
 					showToast.success('File added');
-					setShow(false);
 				} else {
 					console.error("Couldn't generat pDf");
 					showToast.error("Couldn't generat pDf");
@@ -100,7 +108,7 @@ function CreateQuiz() {
 				/>
 				<p className="text-sm text-gray-500">
 					Click your to &nbsp;
-					<span onClick={handleAddFileClick} className="text-blue-700 underline ">here</span> to upload
+					<span onClick={handleAddFileClick} className="text-blue-700 underline cursor-pointer">here</span> to upload
 					document
 				</p>
 			</div>
