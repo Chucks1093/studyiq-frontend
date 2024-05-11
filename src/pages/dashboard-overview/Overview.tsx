@@ -31,10 +31,10 @@ const analyticsCards = [
 		percent: 30,
 	},
 	{
-		title: 'Total questions shared',
+		title: 'Total uploaded document',
       color: "blue",
 		total: 87,
-		icon: '/icons/question-mark.svg',
+		icon: '/icons/document.svg',
 		filter: 'percentage',
 		percent: 30,
 	},

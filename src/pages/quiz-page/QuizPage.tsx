@@ -6,7 +6,7 @@ function QuizPage() {
   const quizCards = useQuestion(state => state.allUsersCards)
   return (
     <div>
-			<h1 className="font-bold text-3xl">Your flash cards</h1>
+			<h1 className="font-bold text-3xl">Your Generated Quizzes</h1>
 			<p className="text-gray-500 text-sm my-2 w-[55%]">
 				Explore and review the comprehensive collection of engaging and
 				informative quizzes you have generated here.

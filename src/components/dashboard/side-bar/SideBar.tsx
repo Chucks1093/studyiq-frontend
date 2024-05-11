@@ -53,12 +53,6 @@ const SideBar = () => {
 				title="Quizzes"
 				handleClick={handleNavLinkClick}
 			/>
-			<SidebarItem
-				link="/dashboard/summary"
-				icon="/icons/text-summary.svg"
-				title="Summary"
-				handleClick={handleNavLinkClick}
-			/>
 
          </div>
          <div className='mt-auto border-t border-t-gray-200'>

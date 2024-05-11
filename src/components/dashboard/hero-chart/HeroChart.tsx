@@ -13,9 +13,8 @@ const HeroChart = () => {
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
-
 		// canvas.style.height = canvasHeight + 'px';
-      canvas.style.width = "100%"
+		canvas.style.width = '100%';
 		const fontFamily = 'Ysabeau, sans-serif';
 
 		new Chart(ctx, {
@@ -37,6 +36,19 @@ const HeroChart = () => {
 						fill: false,
 						borderColor: 'rgb(75, 192, 192)',
 						tension: 0.1,
+						pointStyle: 'circle',
+						pointRadius: 10,
+						pointHoverRadius: 15,
+					},
+					{
+						label: 'Correct Answers',
+						data: [9, 10, 2, 17, 23, 24, 5],
+						fill: false,
+						borderColor: '#ff8989',
+						tension: 0.1,
+						pointStyle: 'circle',
+						pointRadius: 10,
+						pointHoverRadius: 15,
 					},
 				],
 			},
