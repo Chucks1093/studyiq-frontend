@@ -42,15 +42,15 @@ const SideBar = () => {
 				handleClick={handleNavLinkClick}
 			/>
 			<SidebarItem
-				link="/dashboard/flashcards"
-				icon="/icons/flash-cards.svg"
-				title="Flash Cards"
+				link="/dashboard/create-quiz"
+				icon="/icons/add.svg"
+				title="Create Quiz"
 				handleClick={handleNavLinkClick}
 			/>
 			<SidebarItem
 				link="/dashboard/quiz"
 				icon="/icons/quiz.svg"
-				title="Quiz"
+				title="Quizzes"
 				handleClick={handleNavLinkClick}
 			/>
 			<SidebarItem

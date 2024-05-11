@@ -14,7 +14,7 @@ function AnalyticsCard({title, total, percent, icon, filter, color}: AnalyticsCa
    const calculatedPercent = getPercent(total, percent)
    
   return (
-    <article className="w-full p-4 border border-red-400 rounded-lg">
+    <article className="w-full p-4 border border-gray-300-400 rounded-lg">
       <div className="flex justify-between items-center mb-4">
          <h1 className="text-2xl font-bold">{total}</h1>
          <span className="w-7 h-7 rounded-full flex justify-center items-center ">

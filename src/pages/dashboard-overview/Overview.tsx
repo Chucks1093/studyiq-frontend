@@ -41,7 +41,7 @@ function Overview() {
 	const currentUser = useCurrentUser((state) => state.currentUser);
    
 	return (
-		<div >
+		<div>
 			<h1 className='font-bold text-3xl'>Hi, {currentUser?.name}</h1>
 			<p className='text-gray-500 text-sm my-2'>Welcome back to your studyID dashboard</p>
 			<div className='flex justify-between items-center gap-8 mt-4'>

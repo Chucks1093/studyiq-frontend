@@ -7,9 +7,12 @@ import DashboardLayout from './pages/dashboard-layout/DashboardLayout';
 import Overview from './pages/dashboard-overview/Overview';
 import { Fragment } from 'react/jsx-runtime';
 import { Toaster } from 'react-hot-toast';
-import FlashCardsPage from './pages/flash-cards-page/FlashCardsPage';
 import QuizPage from './pages/quiz-page/QuizPage';
 import SummaryPage from './pages/summary-page/SummaryPage';
+import CreateQuiz from './pages/create-quiz/CreateQuiz';
+import QuizOverview from './pages/QuizOverview';
+
+
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -35,18 +38,22 @@ const router = createBrowserRouter([
 				path: '/dashboard/overview',
 				element: <Overview />,
 			},
-      {
-        path: "/dashboard/flashcards",
-        element: <FlashCardsPage />
-      },
-      {
+			{
+				path: '/dashboard/create-quiz',
+				element: <CreateQuiz />,
+			},
+			{
 				path: '/dashboard/quiz',
 				element: <QuizPage />,
 			},
-      {
-        path: "/dashboard/summary",
-        element: <SummaryPage />
-      }
+			{
+				path: '/dashboard/quiz/:id',
+				element: <QuizOverview />,
+			},
+			{
+				path: '/dashboard/summary',
+				element: <SummaryPage />,
+			},
 		],
 	},
 ]);

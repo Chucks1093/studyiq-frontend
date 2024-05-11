@@ -5,10 +5,10 @@ function NavBar() {
 				<img className="w-7 " src="/icons/logo.svg" alt="logo" />
 				<h2 className="font-medium">studyIQ</h2>
 			</div>
-         <h1 className="font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">Overview</h1>
-         <span className="w-7 h-7 p-1 rounded-full flex justify-center items-center bg-[#b1b1b1]">
-            <img className="w-full invert" src="/icons/plus.svg" alt="" />
-         </span>
+         <h1 className="font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">Dashboard</h1>
+         <span className="w-7 h-7 p-1 rounded-full flex justify-center items-center">
+            <img className="w-full block" src="/icons/setting.svg" />
+				</span>
 		</nav>
 	);
 }
